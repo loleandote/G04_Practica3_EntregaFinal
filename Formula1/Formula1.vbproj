@@ -1,0 +1,311 @@
+﻿<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{3869138D-FA26-4C52-868E-BF4DFE1206BB}</ProjectGuid>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Formula1</RootNamespace>
+    <AssemblyName>Formula1</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MyType>Custom</MyType>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <IncrementalBuild>true</IncrementalBuild>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DocumentationFile>Formula1.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <IncrementalBuild>false</IncrementalBuild>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DocumentationFile>Formula1.xml</DocumentationFile>
+    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="ControlzEx, Version=5.0.0.0, Culture=neutral, PublicKeyToken=69f1c32f803d307e, processorArchitecture=MSIL">
+      <HintPath>..\packages\ControlzEx.5.0.2\lib\net462\ControlzEx.dll</HintPath>
+    </Reference>
+    <Reference Include="MahApps.Metro, Version=2.0.0.0, Culture=neutral, PublicKeyToken=51482d6f650b2b3f, processorArchitecture=MSIL">
+      <HintPath>..\packages\MahApps.Metro.2.4.9\lib\net47\MahApps.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Xaml.Behaviors, Version=1.1.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Xaml.Behaviors.Wpf.1.1.31\lib\net45\Microsoft.Xaml.Behaviors.dll</HintPath>
+    </Reference>
+    <Reference Include="MySql.Data, Version=8.0.28.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="System.Net.Http" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="Application.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Dominio\Controladores\CircuitosViewModel.vb" />
+    <Compile Include="Dominio\Controladores\ClasificacionViewModel.vb" />
+    <Compile Include="Dominio\Controladores\EdicionesViewModel.vb" />
+    <Compile Include="Dominio\Controladores\PaisesViewModel.vb" />
+    <Compile Include="Dominio\Controladores\PilotosViewModel.vb" />
+    <Compile Include="Dominio\Controladores\PremiosViewModel.vb" />
+    <Compile Include="Dominio\Entidades\EntidadesAuxiliares.vb" />
+    <Compile Include="Persistencia\AgenteBD.vb" />
+    <Compile Include="Dominio\Entidades\Circuito.vb" />
+    <Compile Include="Dominio\Entidades\Clasificacion.vb" />
+    <Compile Include="Dominio\Entidades\Edicion.vb" />
+    <Compile Include="Dominio\Entidades\GranPremio.vb" />
+    <Compile Include="Dominio\Entidades\Inscripcion.vb" />
+    <Compile Include="Dominio\Entidades\Pais.vb" />
+    <Compile Include="Dominio\Entidades\Piloto.vb" />
+    <Compile Include="Dominio\Controladores\MainWindowViewModel.vb" />
+    <Compile Include="Dominio\Controladores\ViewModelBase.vb" />
+    <Compile Include="Persistencia\CircuitoDAO.vb" />
+    <Compile Include="Persistencia\ClasificacionDAO.vb" />
+    <Compile Include="Persistencia\EdicionDAO.vb" />
+    <Compile Include="Persistencia\GranPremioDAO.vb" />
+    <Compile Include="Persistencia\PaisDAO.vb" />
+    <Compile Include="Persistencia\PilotoDAO.vb" />
+    <Compile Include="Presentacion\Consulta\Paginas\CircuitosPage.xaml.vb">
+      <DependentUpon>CircuitosPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Consulta\Paginas\PilotosPage.xaml.vb">
+      <DependentUpon>PilotosPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Consulta\Ventanas\CircuitosWindow.xaml.vb">
+      <DependentUpon>CircuitosWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Consulta\Ventanas\ClasificacionWindow.xaml.vb">
+      <DependentUpon>ClasificacionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Consulta\Ventanas\EdicionesWindow.xaml.vb">
+      <DependentUpon>EdicionesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Consulta\Paginas\ClasificacionPage.xaml.vb">
+      <DependentUpon>ClasificacionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Consulta\Paginas\EdicionesPage.xaml.vb">
+      <DependentUpon>EdicionesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Consulta\Paginas\PaisesPage.xaml.vb">
+      <DependentUpon>PaisesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Consulta\Paginas\PremiosPage.xaml.vb">
+      <DependentUpon>PremiosPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Consulta\Ventanas\PaisesWindow.xaml.vb">
+      <DependentUpon>PaisesWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Consulta\Ventanas\PilotosWindow.xaml.vb">
+      <DependentUpon>PilotosWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Consulta\Ventanas\PremiosWindow.xaml.vb">
+      <DependentUpon>PremiosWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Modificación\CircuitoEdicionWindow.xaml.vb">
+      <DependentUpon>CircuitoEdicionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Modificación\EdicionInsercionWindow.xaml.vb">
+      <DependentUpon>EdicionInsercionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Modificación\PaisesEdicionWindow.xaml.vb">
+      <DependentUpon>PaisesEdicionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Modificación\PilotosEdicionWindow.xaml.vb">
+      <DependentUpon>PilotosEdicionWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion\Modificación\PremiosEdicionWindow.xaml.vb">
+      <DependentUpon>PremiosEdicionWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Presentacion\Consulta\Paginas\CircuitosPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentacion\Consulta\Paginas\PilotosPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentacion\Consulta\Ventanas\CircuitosWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentacion\Consulta\Ventanas\ClasificacionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentacion\Consulta\Ventanas\EdicionesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentacion\Consulta\Paginas\ClasificacionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentacion\Consulta\Paginas\EdicionesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentacion\Consulta\Paginas\PaisesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentacion\Consulta\Paginas\PremiosPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentacion\MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="Application.xaml.vb">
+      <DependentUpon>Application.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Presentacion\MainWindow.xaml.vb">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="Presentacion\Consulta\Ventanas\PaisesWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentacion\Consulta\Ventanas\PilotosWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentacion\Consulta\Ventanas\PremiosWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentacion\Modificación\CircuitoEdicionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentacion\Modificación\EdicionInsercionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentacion\Modificación\PaisesEdicionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentacion\Modificación\PilotosEdicionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Presentacion\Modificación\PremiosEdicionWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="System.Threading.Tasks" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.Windows" />
+    <Import Include="System.Windows.Controls" />
+    <Import Include="System.Windows.Data" />
+    <Import Include="System.Windows.Documents" />
+    <Import Include="System.Windows.Input" />
+    <Import Include="System.Windows.Shapes" />
+    <Import Include="System.Windows.Media" />
+    <Import Include="System.Windows.Media.Imaging" />
+    <Import Include="System.Windows.Navigation" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="My Project\AssemblyInfo.vb">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="My Project\MyExtensions\MyWpfExtension.vb">
+      <VBMyExtensionTemplateID>Microsoft.VisualBasic.WPF.MyExtension</VBMyExtensionTemplateID>
+      <VBMyExtensionTemplateVersion>1.0.0.0</VBMyExtensionTemplateVersion>
+    </Compile>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\Settings.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <None Include="My Project\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.vb</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Presentacion\Iconos\Circuito.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Presentacion\Iconos\Piloto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Presentacion\Iconos\Pais.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Presentacion\Iconos\Clasificacion.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Presentacion\Iconos\GranPremio.png" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
+</Project>

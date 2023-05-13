@@ -1,0 +1,253 @@
+﻿<?xml version="1.0"?>
+<doc>
+<assembly>
+<name>
+Formula1
+</name>
+</assembly>
+<members>
+<member name="T:Formula1.My.MyWpfExtension">
+ <summary>
+ Módulo utilizado para definir las propiedades disponibles en el espacio de nombres My de WPF
+ </summary>
+ <remarks></remarks>
+</member>
+<member name="P:Formula1.My.MyWpfExtension.Application">
+ <summary>
+ Devuelve el objeto de aplicación de la aplicación en ejecución
+ </summary>
+</member>
+<member name="P:Formula1.My.MyWpfExtension.Computer">
+ <summary>
+ Devuelve información sobre el equipo host.
+ </summary>
+</member>
+<member name="P:Formula1.My.MyWpfExtension.User">
+ <summary>
+ Devuelve información sobre el usuario actual.  Si desea ejecutar la aplicación con las credenciales 
+ del usuario de Windows actual, llame a My.User.InitializeWithWindowsUser().
+ </summary>
+</member>
+<member name="P:Formula1.My.MyWpfExtension.Log">
+ <summary>
+ Devuelve el registro de la aplicación. El archivo de configuración de la aplicación puede configurar los clientes de escucha.
+ </summary>
+</member>
+<member name="P:Formula1.My.MyWpfExtension.Windows">
+ <summary>
+ Devuelve la colección de Windows definida en el proyecto.
+ </summary>
+</member>
+<member name="T:Formula1.My.Resources.Resources">
+<summary>
+  A strongly-typed resource class, for looking up localized strings, etc.
+</summary>
+</member>
+<member name="P:Formula1.My.Resources.Resources.ResourceManager">
+<summary>
+  Returns the cached ResourceManager instance used by this class.
+</summary>
+</member>
+<member name="P:Formula1.My.Resources.Resources.Culture">
+<summary>
+  Overrides the current thread's CurrentUICulture property for all
+  resource lookups using this strongly typed resource class.
+</summary>
+</member>
+<member name="T:Formula1.CircuitosPage">
+<summary>
+CircuitosPage
+</summary>
+</member>
+<member name="M:Formula1.CircuitosPage.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Formula1.PilotosPage">
+<summary>
+PilotosPage
+</summary>
+</member>
+<member name="M:Formula1.PilotosPage.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Formula1.CircuitosWindow">
+<summary>
+CircuitosWindow
+</summary>
+</member>
+<member name="M:Formula1.CircuitosWindow.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Formula1.ClasificacionWindow">
+<summary>
+ClasificacionWindow
+</summary>
+</member>
+<member name="M:Formula1.ClasificacionWindow.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Formula1.EdicionesWindow">
+<summary>
+EdicionesWindow
+</summary>
+</member>
+<member name="M:Formula1.EdicionesWindow.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Formula1.ClasificacionPage">
+<summary>
+ClasificacionPage
+</summary>
+</member>
+<member name="M:Formula1.ClasificacionPage.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Formula1.EdicionesPage">
+<summary>
+EdicionesPage
+</summary>
+</member>
+<member name="M:Formula1.EdicionesPage.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Formula1.PaisesPage">
+<summary>
+PaisesPage
+</summary>
+</member>
+<member name="M:Formula1.PaisesPage.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Formula1.PremiosPage">
+<summary>
+PremiosPage
+</summary>
+</member>
+<member name="M:Formula1.PremiosPage.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Formula1.PaisesWindow">
+<summary>
+PaisesWindow
+</summary>
+</member>
+<member name="M:Formula1.PaisesWindow.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Formula1.PilotosWindow">
+<summary>
+PilotosWindow
+</summary>
+</member>
+<member name="M:Formula1.PilotosWindow.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Formula1.PremiosWindow">
+<summary>
+PremiosWindow
+</summary>
+</member>
+<member name="M:Formula1.PremiosWindow.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Formula1.CircuitoEdicionWindow">
+<summary>
+CircuitoEdicionWindow
+</summary>
+</member>
+<member name="M:Formula1.CircuitoEdicionWindow.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Formula1.EdicionInsercionWindow">
+<summary>
+EdicionInsercionWindow
+</summary>
+</member>
+<member name="M:Formula1.EdicionInsercionWindow.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Formula1.PaisesEdicionWindow">
+<summary>
+PaisesEdicionWindow
+</summary>
+</member>
+<member name="M:Formula1.PaisesEdicionWindow.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Formula1.PilotosEdicionWindow">
+<summary>
+PilotosEdicionWindow
+</summary>
+</member>
+<member name="M:Formula1.PilotosEdicionWindow.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Formula1.PremiosEdicionWindow">
+<summary>
+PremiosEdicionWindow
+</summary>
+</member>
+<member name="M:Formula1.PremiosEdicionWindow.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Formula1.Application">
+<summary>
+Application
+</summary>
+</member>
+<member name="M:Formula1.Application.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="M:Formula1.Application.Main">
+<summary>
+Application Entry Point.
+</summary>
+</member>
+<member name="T:Formula1.MainWindow">
+<summary>
+MainWindow
+</summary>
+</member>
+<member name="M:Formula1.MainWindow.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+</members>
+</doc>

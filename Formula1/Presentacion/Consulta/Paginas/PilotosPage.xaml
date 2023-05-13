@@ -1,0 +1,42 @@
+﻿<Page x:Class="PilotosPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Formula1"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PilotosPage">
+    <DockPanel Margin="15">
+        <Grid Height=" 50" DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=" auto"/>
+                <ColumnDefinition Width=" auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width=" auto"/>
+                <ColumnDefinition Width=" auto"/>
+                <ColumnDefinition Width=" auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Añadir piloto" Padding="15,0" Command="{Binding CrearPilotoCommand}" VerticalAlignment="Center" />
+            <Label Content="Nombre piloto:" Grid.Column=" 1" VerticalAlignment="Center"/>
+            <TextBox Grid.Column=" 2" Grid.ColumnSpan=" 2" Text="{Binding PilotoFiltro, UpdateSourceTrigger=PropertyChanged}" Margin=" 0,0,15,0" VerticalAlignment="Center"/>
+            <Button Content="Limpiar nombre" Padding="15,0" Grid.Column=" 4" VerticalAlignment="Center" Command="{Binding LimpiarCommand}"/>
+            <TextBlock Text="Pais:" Grid.Column=" 5" VerticalAlignment="Center" Margin=" 15,0,8,0"/>
+            <ComboBox ItemsSource="{Binding Paises}" Width=" 150" SelectedItem="{Binding PaisSeleccionado, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Nombre" Grid.Column=" 6" VerticalAlignment="Center"/>
+
+
+        </Grid>
+        <DataGrid ItemsSource="{Binding Pilotos, UpdateSourceTrigger=PropertyChanged}" Height=" auto" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Top" SelectedItem="{Binding PilotoSeleccionado, UpdateSourceTrigger=PropertyChanged}" CanUserAddRows="False" RowHeaderWidth="0" CanUserResizeRows="False" >
+            <DataGrid.InputBindings >
+                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding EditarPilotoCommand}"/>
+            </DataGrid.InputBindings>
+            <DataGrid.Columns>
+                <DataGridTextColumn Width=" *" MinWidth="100" Header="Nombre" Binding="{Binding Nombre}" />
+                <DataGridTextColumn Width="auto"  Header="FechaNacimiento" Binding="{Binding FechaNacimiento, StringFormat={}{0:dd/MM/yyyy}}"/>
+                <DataGridTextColumn Width="auto" MinWidth="100" Header="Pais" Binding="{Binding Pais.Nombre}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+   
+</Page>

@@ -1,0 +1,3 @@
+﻿Class EdicionesPage
+
+End Class

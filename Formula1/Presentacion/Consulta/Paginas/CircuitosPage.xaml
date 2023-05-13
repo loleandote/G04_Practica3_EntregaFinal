@@ -1,0 +1,42 @@
+﻿<Page x:Class="CircuitosPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Formula1"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="CircuitosPage">
+    <DockPanel Margin=" 15" >
+        <Grid Height=" 50" DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=" auto"/>
+                <ColumnDefinition Width=" auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width=" auto"/>
+                <ColumnDefinition Width=" auto"/>
+                <ColumnDefinition Width=" auto"/>
+            </Grid.ColumnDefinitions>
+            <Button Content="Añadir circuito" Padding="15,0" Command="{Binding CrearCircuitoCommand}" VerticalAlignment="Center" />
+            <Label Content="Nombre circuito:" Grid.Column=" 1" VerticalAlignment="Center"/>
+            <TextBox Grid.Column=" 2" Grid.ColumnSpan=" 2" Text="{Binding CircuitoFiltro, UpdateSourceTrigger=PropertyChanged}" Margin=" 0,0,15,0" VerticalAlignment="Center"/>
+            <Button Content="Limpiar nombre" Padding="15,0" Grid.Column=" 4" VerticalAlignment="Center" Command="{Binding LimpiarCommand}"/>
+            <TextBlock Text="Pais:" Grid.Column=" 5" VerticalAlignment="Center" Margin=" 15,0,8,0"/>
+            <ComboBox ItemsSource="{Binding Paises}" Width=" 150" SelectedItem="{Binding PaisSeleccionado, UpdateSourceTrigger=PropertyChanged}" DisplayMemberPath="Nombre" Grid.Column=" 6" VerticalAlignment="Center"/>
+        </Grid>
+        <DataGrid VerticalAlignment="Top"  AutoGenerateColumns="False" ItemsSource="{Binding Circuitos, UpdateSourceTrigger=PropertyChanged}" SelectedItem="{Binding CircuitoSeleccionado, UpdateSourceTrigger=PropertyChanged}"
+                  CanUserAddRows="False" Height=" auto"  IsReadOnly="True" RowHeaderWidth="0" CanUserResizeRows="False" >
+            <DataGrid.InputBindings>
+                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding EditarCircuitoCommand}"/>
+            </DataGrid.InputBindings>
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="NOMBRE" Binding="{Binding Nombre}"/>
+                <DataGridTextColumn Header="CIUDAD" Binding="{Binding Ciudad}"/>
+                <DataGridTextColumn Header="PAIS" Binding="{Binding Pais.Nombre}"/>
+                <DataGridTextColumn Header="LONGITUD" Binding="{Binding Longitud}"/>
+                <DataGridTextColumn Header="CURVAS" Binding="{Binding Curvas}" Width=" *"/>
+            </DataGrid.Columns>
+        </DataGrid> 
+    </DockPanel>
+</Page>

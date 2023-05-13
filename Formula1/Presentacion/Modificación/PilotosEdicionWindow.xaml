@@ -1,0 +1,66 @@
+﻿<mah:MetroWindow x:Class="PilotosEdicionWindow"
+                 xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                 xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                 xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+                 mc:Ignorable="d"
+        Title="{Binding Titulo}" Height="500" Width="800">
+    <DockPanel >
+        <Grid DockPanel.Dock="Bottom" Height=" 150" Visibility="{Binding VerEdicion}">
+            <DataGrid Grid.Row=" 6" Grid.ColumnSpan=" 2" Margin="15" MinWidth=" 500" ItemsSource="{Binding Clasificaciones, UpdateSourceTrigger=PropertyChanged}" Height=" auto"  IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Top" CanUserAddRows="False" RowHeaderWidth="0" CanUserResizeRows="False">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Gran PREMIO" Binding="{Binding Edicion.GranPremio.Nombre}"/>
+                    <DataGridTextColumn Header="Posicion" Binding="{Binding Posicion}"/>
+                    <DataGridTextColumn Header="Puntuacion" Binding="{Binding Puntuacion}"/>
+                    <DataGridTextColumn Header="Año" Binding="{Binding Edicion.Año}"/>
+                    <DataGridTextColumn Header="Vuelta Rapida" Binding="{Binding Edicion.VueltaRapida}"/>
+
+
+
+                </DataGrid.Columns>
+            </DataGrid>
+
+        </Grid>
+        <Grid HorizontalAlignment="Center" Height=" auto" VerticalAlignment="Center" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=" auto"/>
+                <ColumnDefinition Width=" auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height=" auto"/>
+                <RowDefinition Height=" auto"/>
+                <RowDefinition Height=" auto"/>
+                <RowDefinition Height=" auto"/>
+                <RowDefinition Height=" auto"/>
+                <RowDefinition Height=" auto"/>
+                <RowDefinition Height=" auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Piloto" FontSize="32" Grid.ColumnSpan=" 2" HorizontalAlignment="Center" Margin=" 8,0" />
+            <Label Content="Nombre:" Grid.Row=" 1" Margin=" 8,15" HorizontalContentAlignment="Right"/>
+            <Label Content="Nacimiento:" Grid.Row=" 2" Margin=" 8,15" HorizontalContentAlignment="Right"/>
+            <Label Content="Pais:" Grid.Row=" 3"  Margin=" 8,15" HorizontalContentAlignment="Right"/>
+            <TextBox Text="{Binding Nombre, UpdateSourceTrigger=LostFocus}" Grid.Row=" 1" Grid.Column=" 1"  Margin=" 8,15" />
+            <DatePicker SelectedDate="{Binding FechaNacimiento, UpdateSourceTrigger=LostFocus}" Grid.Row=" 2" Grid.Column=" 1" Margin=" 8,15" />
+            <ComboBox ItemsSource="{Binding Paises}" DisplayMemberPath="Nombre" SelectedItem="{Binding PaisSeleccionado, UpdateSourceTrigger=LostFocus}" Grid.Column=" 1" Grid.Row=" 3"  Margin=" 8,15" />
+            <Grid  VerticalAlignment="Center"  Width=" AUTO"  Grid.Row=" 4" Grid.ColumnSpan=" 2" Visibility="{Binding VerEdicion}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Button Content="Guardar" Width=" 150 " Command="{Binding GuardarPilotoCommand}" HorizontalAlignment="Right"  />
+                <Button Content="Eliminar" Grid.Column="1" Margin=" 15,0" HorizontalAlignment="Left"  Width=" 150" Command="{Binding EliminarPilotoCommand}"/>
+            </Grid>
+            <Button Content="Guardar" Grid.Row=" 4" Grid.ColumnSpan=" 2" Width=" 150 " Command="{Binding GuardarPilotoCommand}" HorizontalAlignment="Center" Visibility="{Binding VerCreacion}" />
+            <StackPanel  Grid.Row="5" Orientation="Horizontal" Grid.ColumnSpan=" 2" >
+                <Label Content="Gran Premio:"/>
+                <ComboBox ItemsSource="{Binding GrandesPremios}" SelectedItem="{Binding GranPremioSeleccionado}"/>
+                <Label Content="Año:"/>
+                <ComboBox ItemsSource="{Binding Años}" DisplayMemberPath="Valor" SelectedItem="{Binding AñoSeleccionado}"/>
+            </StackPanel>
+
+
+        </Grid>
+    </DockPanel>
+    
+</mah:MetroWindow>

@@ -1,0 +1,39 @@
+﻿<mah:MetroWindow x:Class="PilotosWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:Formula1"
+        mc:Ignorable="d"
+        Title="Pilotos" Height="450" Width="550">
+    <DockPanel Margin=" 15" >
+        <Grid Height=" 50" DockPanel.Dock="Top">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=" auto"/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition Width=" auto"/>
+                <ColumnDefinition Width=" auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Fitrar piloto:"  VerticalAlignment="Center"/>
+            <TextBox Grid.Column=" 1" Grid.ColumnSpan=" 2" Text="{Binding PilotoFiltro, UpdateSourceTrigger=PropertyChanged}" Margin=" 0,0,15,0" VerticalAlignment="Center"/>
+            <Button Content="Limpiar" Width="80" Grid.Column=" 3" VerticalAlignment="Center" Command="{Binding LimpiarCommand}"/>
+            <TextBlock Text="Pais:" Grid.Column=" 4" VerticalAlignment="Center" Margin=" 15,0,8,0"/>
+            <ComboBox ItemsSource="{Binding Paises}" Width=" 100" SelectedItem="{Binding PaisSeleccionado, UpdateSourceTrigger=PropertyChanged}" Grid.Column=" 5" VerticalAlignment="Center"/>
+
+        </Grid>
+        <DataGrid ItemsSource="{Binding Pilotos, UpdateSourceTrigger=PropertyChanged}" IsReadOnly="True" AutoGenerateColumns="False" SelectedItem="{Binding PilotoSeleccionado, UpdateSourceTrigger=PropertyChanged}" Grid.Row="1" Grid.ColumnSpan=" 6" CanUserAddRows="False" RowHeaderWidth="0" CanUserResizeRows="False" >
+            <DataGrid.InputBindings >
+                <MouseBinding Gesture="LeftDoubleClick" Command="{Binding EditarPilotoCommand}"/>
+            </DataGrid.InputBindings>
+            <DataGrid.Columns>
+                <DataGridTextColumn Width=" *" MinWidth="100" Header="Nombre" Binding="{Binding IdPais}" />
+                <DataGridTextColumn Width="auto"  Header="FechaNacimiento" Binding="{Binding Nombre, StringFormat={}{0:dd/mm/yyyy}}"/>
+                <DataGridTextColumn Width="auto" MinWidth="100" Header="Pais" Binding="{Binding Pais.Nombre}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </DockPanel>
+  
+</mah:MetroWindow>

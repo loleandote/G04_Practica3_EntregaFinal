@@ -1,0 +1,74 @@
+﻿<mah:MetroWindow x:Class="MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:Formula1"
+        mc:Ignorable="d"
+                 
+        Title="Menu" Height="500" Width="1000">
+    <mah:MetroWindow.Resources>
+        <Style TargetType="Border" >
+            <Setter Property="Background" Value="RoyalBlue" />
+            <Setter Property="BorderBrush" Value="White"/>
+            <Setter Property="BorderThickness" Value=" 1"/>
+        </Style>
+        <Style TargetType="Image">
+            <Setter Property="Margin" Value=" 5"/>
+            <Setter Property="Width" Value=" 40"/>
+        </Style>
+        <Style TargetType="ToolTip" >
+            <Setter Property="Background" Value="LemonChiffon"  />
+            <!--<Setter Property="Foreground" Value="White" />-->
+        </Style>
+    </mah:MetroWindow.Resources>
+    <DockPanel>
+        <Grid DockPanel.Dock="Left" Background="RoyalBlue" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height=" auto"/>
+                <RowDefinition Height=" auto"/>
+                <RowDefinition Height=" auto"/>
+                <RowDefinition Height=" auto"/>
+                <RowDefinition Height=" auto"/>
+            </Grid.RowDefinitions>
+            <Button Width="50" Padding=" 0" Margin=" 0,8" Command="{Binding PilotosCommand, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" BorderThickness=" 0" ToolTip="Pilotos">
+                <Button.Content>
+                    <Border>
+                            <Image Source="/Presentacion/Iconos/Piloto.png"/>
+                        </Border>
+                    </Button.Content>
+            </Button>
+            <Button Grid.Row="1" Width=" 50" Padding=" 0" Margin=" 0,8" Background="Transparent" Command="{Binding PaisesCommand, UpdateSourceTrigger=PropertyChanged}" BorderThickness=" 0" ToolTip="Paises">
+                <Button.Content>
+                    <Border>
+                        <Image Source="/Presentacion/Iconos/Pais.png"/>
+                    </Border>
+                </Button.Content>
+            </Button>
+            <Button Grid.Row=" 2" Width=" 50" Padding=" 0" Margin=" 0,8" Background="Transparent" Command="{Binding PremiosCommand, UpdateSourceTrigger=PropertyChanged}" ToolTip="Gran Premio" BorderThickness=" 0">
+                <Button.Content>
+                    <Border >
+                        <Image Source="/Presentacion/Iconos/GranPremio.png"/>
+                    </Border>
+                </Button.Content>
+            </Button>
+            <Button Grid.Row="3" Margin=" 0,8" ToolTip="Circuitos" Width=" 50" Padding=" 0"  Command="{Binding CircuitosCommand, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" BorderThickness=" 0">
+
+                <Button.Content>
+                    <Border BorderThickness=" 1">
+                        <Image Source="/Presentacion/Iconos/Circuito.png"/>
+                    </Border>
+                </Button.Content>
+            </Button>
+            <Button Grid.Row="4" Width=" 50" Padding=" 0" Margin=" 0,8" Command="{Binding ClasificaciónCommand, UpdateSourceTrigger=PropertyChanged}" Background="Transparent" BorderThickness="0" ToolTip="Clasificación">
+                <Button.Content>
+                    <Border>
+                        <Image Source="/Presentacion/Iconos/Clasificacion.png"/>
+                    </Border>
+                </Button.Content>
+            </Button>
+        </Grid>
+        <Frame Content="{Binding Pantalla, UpdateSourceTrigger=PropertyChanged}" NavigationUIVisibility="Hidden"/>
+    </DockPanel>
+</mah:MetroWindow>

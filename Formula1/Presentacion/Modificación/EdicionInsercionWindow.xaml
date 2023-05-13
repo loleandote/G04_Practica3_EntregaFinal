@@ -1,0 +1,39 @@
+﻿<mah:MetroWindow x:Class="EdicionInsercionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:Formula1"
+        mc:Ignorable="d"
+        Title="{Binding Titulo}" Height="300" Width="400">
+    <Window.Resources>
+        <Style TargetType="Label" >
+            <Setter Property="HorizontalAlignment" Value="Right" />
+            <Setter Property="Margin" Value="8,15"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+        <Style TargetType="TextBox" >
+            <Setter Property="Height" Value=" auto"/>
+            <Setter Property="Margin" Value="8,15"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+        </Style>
+    </Window.Resources>
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center">
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition MinWidth="100"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Label Content="Año:"/>
+        <Label Content="Circuito:" Grid.Row="1"/>
+        <mah:NumericUpDown Grid.Column=" 1" VerticalAlignment="Center" Value="{Binding Año}" />
+        <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Circuitos}" DisplayMemberPath="Valor" VerticalAlignment="Center" SelectedItem="{Binding CircuitoSeleccionado, UpdateSourceTrigger=LostFocus}"/>
+        <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Guardar" Command="{Binding CrearEdicionCommand}"/>
+    </Grid>
+</mah:MetroWindow>

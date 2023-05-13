@@ -1,0 +1,48 @@
+﻿<mah:MetroWindow x:Class="PremiosEdicionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        mc:Ignorable="d"
+        Title="{Binding Titulo}" Height="400" Width="400">
+    <mah:MetroWindow.Resources>
+        <Style TargetType="Label" >
+            <Setter Property="HorizontalAlignment"  Value="Right" />
+            <Setter Property="Margin" Value="8,15"/>
+            <Setter Property="VerticalAlignment" Value="Center" />
+        </Style>
+    </mah:MetroWindow.Resources>
+    <Grid>
+        <Label Content="Gran premio" FontSize="32" VerticalAlignment="Top" HorizontalAlignment="Center"  />
+        <Grid VerticalAlignment="Center"  HorizontalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height=" auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Button Content="Crear edicion" Grid.Column=" 1" HorizontalAlignment="Right" Command="{Binding CrearEdicionCommand}" Visibility="{Binding VerEdicion}" Margin="15"/>
+                <Label Content="Nombre:" Grid.Row=" 1"/>
+                <Label Content="Pais:" Grid.Row=" 2"/>
+                <TextBox Text="{Binding Nombre, UpdateSourceTrigger=LostFocus}"  Grid.Row=" 1" Grid.Column=" 1"  Margin=" 8,15" Width=" 100"/>
+                <ComboBox ItemsSource="{Binding Paises}" DisplayMemberPath="Nombre" SelectedItem="{Binding PaisSeleccionado, UpdateSourceTrigger=LostFocus}" Grid.Column=" 1" Grid.Row=" 2"  Margin=" 8,15" />
+            </Grid>
+            <StackPanel Orientation="Horizontal"  Grid.Row=" 1" Grid.ColumnSpan=" 2" Visibility="{Binding VerEdicion}">
+                <Button Content="Guardar" Width=" 150 " Command="{Binding GuardarGranPremioCommand}"/>
+                <Button Content="Eliminar" Margin=" 15,0" Width=" 150" Command="{Binding EliminarGranPremioCommand}"/>
+            </StackPanel>
+            <Button Content="Guardar" Grid.Row=" 1" Grid.ColumnSpan=" 2" Width=" 150 " Command="{Binding GuardarGranPremioCommand}" HorizontalAlignment="Center" Visibility="{Binding VerCreacion}" />
+        </Grid>
+    </Grid>
+    
+</mah:MetroWindow>

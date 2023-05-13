@@ -1,0 +1,33 @@
+﻿<mah:MetroWindow x:Class="PaisesEdicionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+        xmlns:local="clr-namespace:Formula1"
+        mc:Ignorable="d"
+        Title="{Binding Titulo}" Height="300" Width="400">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center"  >
+        <Grid.RowDefinitions>
+            <RowDefinition Height=" auto"/>
+            <RowDefinition Height=" auto"/>
+            <RowDefinition Height=" auto" />
+            <RowDefinition Height=" auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Label Content="País" FontSize="32" Grid.ColumnSpan=" 2" HorizontalAlignment="Center"/>
+        <Label Content="Identificador:" Grid.Row=" 1" HorizontalAlignment="Right" Margin=" 8,15" />
+        <Label Content="Nombre:" Grid.Row=" 2" HorizontalAlignment="Right" Margin=" 8,15"/>
+        <TextBox Text="{Binding Identificador,UpdateSourceTrigger=PropertyChanged}" Grid.Row=" 1" Grid.Column=" 1" Height=" auto" Margin=" 8,15" IsReadOnly="True" Width=" 100" VerticalContentAlignment="Center" />
+        <TextBox Text="{Binding Nombre, UpdateSourceTrigger=PropertyChanged}" Grid.Row=" 2" Grid.Column=" 1" Height=" auto" Margin=" 8,15" Width=" 100" VerticalContentAlignment="Center"/>
+        <StackPanel Orientation="Horizontal" Width=" AUTO"  Grid.Row=" 3" Grid.ColumnSpan=" 2" Visibility="{Binding VerEdicion}">
+            <Button Content="Guardar" Width=" 150 " Command="{Binding GuardarPaisCommand}" HorizontalAlignment="Center" />
+            <Button Content="Eliminar" Margin=" 15,0" Width=" 150" Command="{Binding EliminarPaisCommand}"/>
+        </StackPanel>
+        <Button Content="Guardar" Grid.Row=" 3" Grid.ColumnSpan=" 2" Width=" 150 " Command="{Binding GuardarPaisCommand}" HorizontalAlignment="Center" Visibility="{Binding VerCreacion}" />
+
+    </Grid>
+</mah:MetroWindow>
