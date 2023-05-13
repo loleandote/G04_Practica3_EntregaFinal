@@ -67,7 +67,11 @@ Namespace EdicionesViewModel
             }
 
             EdicionDAO.InsertarEdicion(edicion)
+            RealizarCarrera()
             Cerrar()
+        End Sub
+        Private Sub RealizarCarrera()
+
         End Sub
         Private Sub Cerrar()
             MsgBox(Año)

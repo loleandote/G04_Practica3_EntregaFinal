@@ -24,7 +24,7 @@
         </Style>
     </mah:MetroWindow.Resources>
     <DockPanel>
-        <Grid DockPanel.Dock="Left" Background="RoyalBlue" >
+        <Grid DockPanel.Dock="Left" Background="RoyalBlue" Width=" 60" >
             <Grid.RowDefinitions>
                 <RowDefinition Height=" auto"/>
                 <RowDefinition Height=" auto"/>

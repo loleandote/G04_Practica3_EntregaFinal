@@ -31,10 +31,10 @@
                 <MouseBinding Gesture="LeftDoubleClick" Command="{Binding EditarCircuitoCommand}"/>
             </DataGrid.InputBindings>
             <DataGrid.Columns>
-                <DataGridTextColumn Header="NOMBRE" Binding="{Binding Nombre}"/>
-                <DataGridTextColumn Header="CIUDAD" Binding="{Binding Ciudad}"/>
-                <DataGridTextColumn Header="PAIS" Binding="{Binding Pais.Nombre}"/>
-                <DataGridTextColumn Header="LONGITUD" Binding="{Binding Longitud}"/>
+                <DataGridTextColumn Header="NOMBRE" Width="*" Binding="{Binding Nombre}"/>
+                <DataGridTextColumn Header="CIUDAD" Width="2*" Binding="{Binding Ciudad}"/>
+                <DataGridTextColumn Header="PAIS" Width=" *" Binding="{Binding Pais.Nombre}"/>
+                <DataGridTextColumn Header="LONGITUD" Width="*" Binding="{Binding Longitud}"/>
                 <DataGridTextColumn Header="CURVAS" Binding="{Binding Curvas}" Width=" *"/>
             </DataGrid.Columns>
         </DataGrid> 
