@@ -182,7 +182,7 @@ Namespace PaisesViewModel
         End Sub
 
         Private Sub EliminarPais()
-            PaisDAO.EliminarPais(pais)
+            PaisDAO.EliminarPais(pais.IdPais)
             Cerrar()
         End Sub
 

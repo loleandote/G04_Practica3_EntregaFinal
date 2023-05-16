@@ -4,8 +4,15 @@
     Public Property Posicion As Integer
 End Class
 
-Public Class ClasificacionPiloto
-    Public Property Edicion As EdicionPiloto
+Public Class ClasificacionEdicionPiloto
+    Public Property Edicion As String
     Public Property Posicion As Integer
     Public Property Puntuacion As Integer
+End Class
+
+Public Class ClasificacionGranPremioPiloto
+    Public Property GranPremio As String
+    Public Property Posicion As Integer
+    Public Property Puntuacion As Integer
+    Public Property VueltaRapida As String
 End Class

@@ -1,5 +1,4 @@
-﻿Imports Formula1.EntidadesAuxiliares
-Imports Formula1.ViewModelBase
+﻿Imports Formula1.ViewModelBase
 
 Namespace PilotosViewModel
     Public Class PilotosConsultaViewModel
@@ -150,7 +149,6 @@ Namespace PilotosViewModel
         Private view As PilotosEdicionWindow
         Private viewModel As PilotosConsultaViewModel
         Private _PaisSeleccionado As Pais
-        Private _AñoSeleccionado As ClaveValor
 
         Public Sub New(piloto As Piloto, view As PilotosEdicionWindow, viewModel As PilotosConsultaViewModel)
             Me.piloto = piloto
@@ -176,7 +174,6 @@ Namespace PilotosViewModel
                 PaisSeleccionado = piloto.Pais
                 Try
                     PaisSeleccionado = (From p In Paises Select p Where p.IdPais = piloto.Pais.IdPais).FirstOrDefault
-                    Clasificaciones = ClasificacionDAO.ObtenerClasificacionesPiloto(piloto.IdPiloto)
                 Catch ex As Exception
                     MsgBox(ex.Message)
                 End Try
@@ -184,19 +181,6 @@ Namespace PilotosViewModel
                 VerEdicion = Visibility.Visible
                 GuardarPilotoCommand = New DelegateCommand(AddressOf GuardarPiltoto)
                 EliminarPilotoCommand = New DelegateCommand(AddressOf EliminarPiloto)
-
-                Años = New List(Of ClaveValor) From
-                    {
-                        New ClaveValor() With {
-                        .Clave = 0, .Valor = "Todos los años"}
-                    }
-                Dim anos = (From c In Clasificaciones Select c.Edicion.Año).Distinct
-                For Each ano In anos
-                    Años.Add(New ClaveValor() With {.Clave = ano, .Valor = ano.ToString})
-                Next
-                AñoSeleccionado = Años.First
-                GrandesPremios = New List(Of GranPremio)
-                GrandesPremios.AddRange((From g In Clasificaciones Select g.Edicion.GranPremio).ToList)
             End If
 
         End Sub
@@ -218,21 +202,6 @@ Namespace PilotosViewModel
                 OnPropertyChanged("PaisSeleccionado")
             End Set
         End Property
-        Public Property GrandesPremios As List(Of GranPremio)
-        Public Property GranPremioSeleccionado As GranPremio
-        Public Property Años As List(Of ClaveValor)
-
-        Public Property AñoSeleccionado As ClaveValor
-            Get
-                Return _AñoSeleccionado
-            End Get
-            Set
-                _AñoSeleccionado = Value
-                OnPropertyChanged("AñoSeleccionado")
-            End Set
-        End Property
-
-        Public Property Clasificaciones As List(Of ClasificacionPiloto)
         Public Property GuardarPilotoCommand As ICommand
 
         Public Property EliminarPilotoCommand As ICommand

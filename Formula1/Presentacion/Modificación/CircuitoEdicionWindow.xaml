@@ -44,11 +44,11 @@
             <Label Content="Pais:" Grid.Row=" 3"/>
             <Label Content="Longitud:" Grid.Row=" 4"/>
             <Label Content="Curvas:" Grid.Row=" 5"/>
-            <TextBox Text="{Binding Nombre, UpdateSourceTrigger=LostFocus}" Grid.Column="1" Grid.Row="1" Height=" auto" Margin=" 8,15" VerticalContentAlignment="Center"/>
-            <TextBox Text="{Binding Ciudad, UpdateSourceTrigger=LostFocus}" Grid.Column="1" Grid.Row="2" Height=" auto" Margin=" 8,15" VerticalContentAlignment="Center"/>
+            <TextBox Text="{Binding Nombre, UpdateSourceTrigger=LostFocus}" Grid.Column="1" Grid.Row="1" />
+            <TextBox Text="{Binding Ciudad, UpdateSourceTrigger=LostFocus}" Grid.Column="1" Grid.Row="2" />
             <ComboBox ItemsSource="{Binding Paises}" DisplayMemberPath="Nombre" SelectedItem="{Binding PaisSeleccionado, UpdateSourceTrigger=LostFocus}" Margin="8,15" Grid.Column=" 1" Grid.Row=" 3" VerticalContentAlignment="Center"/>
-            <TextBox Text="{Binding Longitud, UpdateSourceTrigger=LostFocus}" Grid.Column=" 1" Grid.Row=" 4" Margin="8,15" VerticalContentAlignment="Center"/>
-            <TextBox Text="{Binding Curvas, UpdateSourceTrigger=PropertyChanged}" Grid.Column=" 1" Grid.Row=" 5" Margin="8,15" VerticalContentAlignment="Center"/>
+            <TextBox Text="{Binding Longitud, UpdateSourceTrigger=LostFocus}" Grid.Column=" 1" Grid.Row=" 4"/>
+            <TextBox Text="{Binding Curvas, UpdateSourceTrigger=PropertyChanged}" Grid.Column=" 1" Grid.Row=" 5"/>
 
         </Grid>
         <StackPanel Orientation="Horizontal" Width=" AUTO"  Grid.Row=" 1"  Visibility="{Binding VerEdicion}">

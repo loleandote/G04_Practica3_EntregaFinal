@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         mc:Ignorable="d"
-        Title="{Binding Titulo}" Height="400" Width="400">
+        Title="{Binding Titulo}" Height="400" Width="500">
     <mah:MetroWindow.Resources>
         <Style TargetType="Label" >
             <Setter Property="HorizontalAlignment"  Value="Right" />

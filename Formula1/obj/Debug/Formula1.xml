@@ -54,6 +54,46 @@ Formula1
   resource lookups using this strongly typed resource class.
 </summary>
 </member>
+<member name="T:Formula1.EdicionInformeWindow">
+<summary>
+EdicionInformeWindow
+</summary>
+</member>
+<member name="M:Formula1.EdicionInformeWindow.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Formula1.PilotoInformeWindow">
+<summary>
+PilotoInformeWindow
+</summary>
+</member>
+<member name="M:Formula1.PilotoInformeWindow.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Formula1.PilotosParticipantesWindow">
+<summary>
+PilotosParticipantesWindow
+</summary>
+</member>
+<member name="M:Formula1.PilotosParticipantesWindow.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Formula1.TemporadaInformeWindow">
+<summary>
+TemporadaInformeWindow
+</summary>
+</member>
+<member name="M:Formula1.TemporadaInformeWindow.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
 <member name="T:Formula1.CircuitosPage">
 <summary>
 CircuitosPage
@@ -70,46 +110,6 @@ PilotosPage
 </summary>
 </member>
 <member name="M:Formula1.PilotosPage.InitializeComponent">
-<summary>
-InitializeComponent
-</summary>
-</member>
-<member name="T:Formula1.CircuitosWindow">
-<summary>
-CircuitosWindow
-</summary>
-</member>
-<member name="M:Formula1.CircuitosWindow.InitializeComponent">
-<summary>
-InitializeComponent
-</summary>
-</member>
-<member name="T:Formula1.ClasificacionWindow">
-<summary>
-ClasificacionWindow
-</summary>
-</member>
-<member name="M:Formula1.ClasificacionWindow.InitializeComponent">
-<summary>
-InitializeComponent
-</summary>
-</member>
-<member name="T:Formula1.EdicionesWindow">
-<summary>
-EdicionesWindow
-</summary>
-</member>
-<member name="M:Formula1.EdicionesWindow.InitializeComponent">
-<summary>
-InitializeComponent
-</summary>
-</member>
-<member name="T:Formula1.ClasificacionPage">
-<summary>
-ClasificacionPage
-</summary>
-</member>
-<member name="M:Formula1.ClasificacionPage.InitializeComponent">
 <summary>
 InitializeComponent
 </summary>
@@ -140,36 +140,6 @@ PremiosPage
 </summary>
 </member>
 <member name="M:Formula1.PremiosPage.InitializeComponent">
-<summary>
-InitializeComponent
-</summary>
-</member>
-<member name="T:Formula1.PaisesWindow">
-<summary>
-PaisesWindow
-</summary>
-</member>
-<member name="M:Formula1.PaisesWindow.InitializeComponent">
-<summary>
-InitializeComponent
-</summary>
-</member>
-<member name="T:Formula1.PilotosWindow">
-<summary>
-PilotosWindow
-</summary>
-</member>
-<member name="M:Formula1.PilotosWindow.InitializeComponent">
-<summary>
-InitializeComponent
-</summary>
-</member>
-<member name="T:Formula1.PremiosWindow">
-<summary>
-PremiosWindow
-</summary>
-</member>
-<member name="M:Formula1.PremiosWindow.InitializeComponent">
 <summary>
 InitializeComponent
 </summary>
@@ -224,6 +194,16 @@ PremiosEdicionWindow
 InitializeComponent
 </summary>
 </member>
+<member name="T:Formula1.Window1">
+<summary>
+Window1
+</summary>
+</member>
+<member name="M:Formula1.Window1.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
 <member name="T:Formula1.Application">
 <summary>
 Application
@@ -245,6 +225,16 @@ MainWindow
 </summary>
 </member>
 <member name="M:Formula1.MainWindow.InitializeComponent">
+<summary>
+InitializeComponent
+</summary>
+</member>
+<member name="T:Formula1.InformesPage">
+<summary>
+InformesPage
+</summary>
+</member>
+<member name="M:Formula1.InformesPage.InitializeComponent">
 <summary>
 InitializeComponent
 </summary>

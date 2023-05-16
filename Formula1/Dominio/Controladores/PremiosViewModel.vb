@@ -1,6 +1,7 @@
 ﻿Imports Formula1.EdicionesViewModel
 Imports Formula1.PaisesViewModel
 Imports Formula1.ViewModelBase
+Imports Microsoft.Reporting.WinForms
 
 Namespace PremiosViewModel
     Public Class PremiosConsultaViewModel
@@ -8,12 +9,14 @@ Namespace PremiosViewModel
         Public PremioEdicion As PremiosEdicionWindow
         Private _PremioSeleccionado As GranPremio
         Private TodosGranPremio As List(Of GranPremio)
+        Private _GranPremios As List(Of GranPremio)
         Public Sub New()
             CrearGranPremioCommand = New DelegateCommand(AddressOf CrearGranPremio)
             EditarGranPremioCommand = New DelegateCommand(AddressOf EditarGranPremio)
             Dim paisesaux = New List(Of Pais) From {
                New Pais With {.IdPais = "", .Nombre = "Todos los paises"}
            }
+
             paisesaux.AddRange(PaisDAO.ObtenerTodosPaises)
             Paises = paisesaux
             _PaisSeleccionado = Paises.First
@@ -21,6 +24,15 @@ Namespace PremiosViewModel
         End Sub
 
         Public Property GranPremios As List(Of GranPremio)
+            Get
+                Return _GranPremios
+            End Get
+            Set
+                _GranPremios = Value
+                OnPropertyChanged("GranPremios")
+            End Set
+        End Property
+
         Public Property PremioSeleccionado As GranPremio
             Get
                 Return _PremioSeleccionado
@@ -68,8 +80,7 @@ Namespace PremiosViewModel
         End Sub
 
         Public Sub Cargar()
-            TodosGranPremio = GranPremioDAO.ObtenerTodosGranPremio
-            GranPremios = TodosGranPremio
+            GranPremios = GranPremioDAO.ObtenerTodosGranPremio
         End Sub
 
     End Class
@@ -154,7 +165,7 @@ Namespace PremiosViewModel
             EdicionInsercion.Show()
         End Sub
 
-        'Cerrar formulario y recargar paises
+        'Cerrar formulario y recargar premios
         Private Sub Cerrar()
             view.Close()
             viewModel.Cargar()

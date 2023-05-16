@@ -5,24 +5,16 @@
                  xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                  xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
                  mc:Ignorable="d"
-        Title="{Binding Titulo}" Height="500" Width="800">
+        Title="{Binding Titulo}" Height="400" Width="600">
     <DockPanel >
-        <Grid DockPanel.Dock="Bottom" Height=" 150" Visibility="{Binding VerEdicion}">
-            <DataGrid Grid.Row=" 6" Grid.ColumnSpan=" 2" Margin="15" MinWidth=" 500" ItemsSource="{Binding Clasificaciones, UpdateSourceTrigger=PropertyChanged}" Height=" auto"  IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Top" CanUserAddRows="False" RowHeaderWidth="0" CanUserResizeRows="False">
-                <DataGrid.Columns>
-                    <DataGridTextColumn Header="Gran PREMIO" Binding="{Binding Edicion.GranPremio.Nombre}"/>
-                    <DataGridTextColumn Header="Posicion" Binding="{Binding Posicion}"/>
-                    <DataGridTextColumn Header="Puntuacion" Binding="{Binding Puntuacion}"/>
-                    <DataGridTextColumn Header="Año" Binding="{Binding Edicion.Año}"/>
-                    <DataGridTextColumn Header="Vuelta Rapida" Binding="{Binding Edicion.VueltaRapida}"/>
-
-
-
-                </DataGrid.Columns>
-            </DataGrid>
-
-        </Grid>
+       
         <Grid HorizontalAlignment="Center" Height=" auto" VerticalAlignment="Center" >
+            <Grid.Resources>
+                <Style TargetType="Label">
+                    <Setter Property="Margin" Value="8,15"/>
+                </Style>
+                
+            </Grid.Resources>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width=" auto"/>
                 <ColumnDefinition Width=" auto"/>
@@ -37,9 +29,9 @@
                 <RowDefinition Height=" auto"/>
             </Grid.RowDefinitions>
             <Label Content="Piloto" FontSize="32" Grid.ColumnSpan=" 2" HorizontalAlignment="Center" Margin=" 8,0" />
-            <Label Content="Nombre:" Grid.Row=" 1" Margin=" 8,15" HorizontalContentAlignment="Right"/>
-            <Label Content="Nacimiento:" Grid.Row=" 2" Margin=" 8,15" HorizontalContentAlignment="Right"/>
-            <Label Content="Pais:" Grid.Row=" 3"  Margin=" 8,15" HorizontalContentAlignment="Right"/>
+            <Label Content="Nombre:" Grid.Row=" 1"  HorizontalContentAlignment="Right"/>
+            <Label Content="Nacimiento:" Grid.Row=" 2" HorizontalContentAlignment="Right"/>
+            <Label Content="Pais:" Grid.Row=" 3" HorizontalContentAlignment="Right"/>
             <TextBox Text="{Binding Nombre, UpdateSourceTrigger=LostFocus}" Grid.Row=" 1" Grid.Column=" 1"  Margin=" 8,15" />
             <DatePicker SelectedDate="{Binding FechaNacimiento, UpdateSourceTrigger=LostFocus}" Grid.Row=" 2" Grid.Column=" 1" Margin=" 8,15" />
             <ComboBox ItemsSource="{Binding Paises}" DisplayMemberPath="Nombre" SelectedItem="{Binding PaisSeleccionado, UpdateSourceTrigger=LostFocus}" Grid.Column=" 1" Grid.Row=" 3"  Margin=" 8,15" />
@@ -52,12 +44,7 @@
                 <Button Content="Eliminar" Grid.Column="1" Margin=" 15,0" HorizontalAlignment="Left"  Width=" 150" Command="{Binding EliminarPilotoCommand}"/>
             </Grid>
             <Button Content="Guardar" Grid.Row=" 4" Grid.ColumnSpan=" 2" Width=" 150 " Command="{Binding GuardarPilotoCommand}" HorizontalAlignment="Center" Visibility="{Binding VerCreacion}" />
-            <StackPanel  Grid.Row="5" Orientation="Horizontal" Grid.ColumnSpan=" 2" >
-                <Label Content="Gran Premio:"/>
-                <ComboBox ItemsSource="{Binding GrandesPremios}" SelectedItem="{Binding GranPremioSeleccionado}"/>
-                <Label Content="Año:"/>
-                <ComboBox ItemsSource="{Binding Años}" DisplayMemberPath="Valor" SelectedItem="{Binding AñoSeleccionado}"/>
-            </StackPanel>
+            
 
 
         </Grid>

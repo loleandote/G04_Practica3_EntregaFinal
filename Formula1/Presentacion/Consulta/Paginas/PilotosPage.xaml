@@ -32,9 +32,9 @@
                 <MouseBinding Gesture="LeftDoubleClick" Command="{Binding EditarPilotoCommand}"/>
             </DataGrid.InputBindings>
             <DataGrid.Columns>
-                <DataGridTextColumn Width=" *" MinWidth="100" Header="Nombre" Binding="{Binding Nombre}" />
-                <DataGridTextColumn Width="auto"  Header="FechaNacimiento" Binding="{Binding FechaNacimiento, StringFormat={}{0:dd/MM/yyyy}}"/>
-                <DataGridTextColumn Width="auto" MinWidth="100" Header="Pais" Binding="{Binding Pais.Nombre}"/>
+                <DataGridTextColumn Width=" 3*" MinWidth="100" Header="Nombre" Binding="{Binding Nombre}" />
+                <DataGridTextColumn Width="*"  Header="Fecha Nacimiento" Binding="{Binding FechaNacimiento, StringFormat={}{0:dd/MM/yyyy}}"/>
+                <DataGridTextColumn Width="*" MinWidth="100" Header="Pais" Binding="{Binding Pais.Nombre}"/>
             </DataGrid.Columns>
         </DataGrid>
     </DockPanel>

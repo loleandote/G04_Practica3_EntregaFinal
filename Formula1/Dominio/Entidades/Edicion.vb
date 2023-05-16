@@ -17,3 +17,5 @@ Public Class EdicionPiloto
     Public Property Año As Integer
     Public Property VueltaRapida As String
 End Class
+
+

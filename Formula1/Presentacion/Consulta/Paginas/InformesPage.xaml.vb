@@ -1,0 +1,3 @@
+﻿Class InformePage
+
+End Class

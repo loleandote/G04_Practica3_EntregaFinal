@@ -226,25 +226,25 @@ Namespace CircuitosViewModel
         Public Property GuardarCircuitoCommand As ICommand
         Public Property EliminarCircuitoCommand As ICommand
         Private Sub GuardarCircuito()
-            If comprobar() Then
-                Circuito.Ciudad = Ciudad
-                Circuito.Curvas = Curvas.Value
-                Circuito.Longitud = Longitud.Value
-                Circuito.Pais = PaisSeleccionado
-                Circuito.Nombre = Nombre
-                CircuitoDAO.EditarCircuito(Circuito)
-                Cerrar()
-            Else
-                MsgBox("Revisa que has introducido bien los datos")
-            End If
+            Circuito.Ciudad = Ciudad
+            Circuito.Curvas = Curvas.Value
+            Circuito.Longitud = Longitud.Value
+            Circuito.Pais = PaisSeleccionado
+            Circuito.Nombre = Nombre
+            CircuitoDAO.EditarCircuito(Circuito)
+            Cerrar()
         End Sub
 
         ' Guardar circuito creado
         Private Sub CrearCircuito()
-            If comprobar() Then
+            If PaisSeleccionado IsNot Nothing Then
                 Circuito.Ciudad = Ciudad
-                Circuito.Curvas = Curvas.Value
-                Circuito.Longitud = Longitud.Value
+                If Curvas.HasValue Then
+                    Circuito.Curvas = Curvas.Value
+                End If
+                If Longitud.HasValue Then
+                    Circuito.Longitud = Longitud.Value
+                End If
                 Circuito.Pais = PaisSeleccionado
                 Circuito.Nombre = Nombre
                 CircuitoDAO.InsertarCircuito(Circuito)
@@ -253,11 +253,6 @@ Namespace CircuitosViewModel
                 MsgBox("Revisa que has introducido bien los datos")
             End If
         End Sub
-        Private Function comprobar() As Boolean
-            Dim valido As Boolean
-            valido = Ciudad IsNot Nothing AndAlso Ciudad.Length > 0 AndAlso Curvas.HasValue AndAlso Longitud.HasValue AndAlso PaisSeleccionado IsNot Nothing AndAlso Nombre IsNot Nothing AndAlso Nombre.Length > 0
-            Return valido
-        End Function
         Private Sub EliminarCircuito()
             CircuitoDAO.EliminarCircuito(Circuito.IdCircuito)
             Cerrar()

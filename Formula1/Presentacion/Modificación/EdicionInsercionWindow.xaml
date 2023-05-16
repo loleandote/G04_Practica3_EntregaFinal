@@ -6,7 +6,7 @@
         xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
         xmlns:local="clr-namespace:Formula1"
         mc:Ignorable="d"
-        Title="{Binding Titulo}" Height="300" Width="400">
+        Title="{Binding Titulo}" Height="300" Width="500">
     <Window.Resources>
         <Style TargetType="Label" >
             <Setter Property="HorizontalAlignment" Value="Right" />
@@ -29,11 +29,14 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
         </Grid.RowDefinitions>
-        <Label Content="Año:"/>
-        <Label Content="Circuito:" Grid.Row="1"/>
-        <mah:NumericUpDown Grid.Column=" 1" VerticalAlignment="Center" Value="{Binding Año}" />
-        <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding Circuitos}" DisplayMemberPath="Valor" VerticalAlignment="Center" SelectedItem="{Binding CircuitoSeleccionado, UpdateSourceTrigger=LostFocus}"/>
-        <Button Grid.Row="2" Grid.ColumnSpan="2" Content="Guardar" Command="{Binding CrearEdicionCommand}"/>
+        <Label Content="Fecha:"/>
+        <Label Content="Nombre:" Grid.Row="1"/>
+        <Label Content="Circuito:" Grid.Row="2"/>
+        <DatePicker Grid.Column=" 1" VerticalAlignment="Center" SelectedDate="{Binding Fecha,UpdateSourceTrigger=LostFocus}" Margin="8,15"/>
+        <TextBox Text="{Binding Nombre, UpdateSourceTrigger=LostFocus}" Grid.Row=" 1" Grid.Column=" 1"/>
+        <ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Circuitos}" DisplayMemberPath="Valor" VerticalAlignment="Center" Margin="8,15" SelectedItem="{Binding CircuitoSeleccionado, UpdateSourceTrigger=LostFocus}"/>
+        <Button Grid.Row="4" Grid.ColumnSpan="2" Content="Guardar" Command="{Binding CrearEdicionCommand}"/>
     </Grid>
 </mah:MetroWindow>

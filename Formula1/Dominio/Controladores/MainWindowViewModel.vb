@@ -9,7 +9,7 @@ Public Class MainWindowViewModel
         PaisesCommand = New DelegateCommand(AddressOf AbrirPaises)
         PremiosCommand = New DelegateCommand(AddressOf AbrirPremios)
         CircuitosCommand = New DelegateCommand(AddressOf AbrirCircuitos)
-        ClasificaciónCommand = New DelegateCommand(AddressOf AbrirClasificacion)
+        InformeCommand = New DelegateCommand(AddressOf AbrirInforme)
     End Sub
 
     Public Property Pantalla As Page
@@ -26,7 +26,7 @@ Public Class MainWindowViewModel
     Public Property PaisesCommand As ICommand
     Public Property PremiosCommand As ICommand
     Public Property CircuitosCommand As ICommand
-    Public Property ClasificaciónCommand As ICommand
+    Public Property InformeCommand As ICommand
 
 
     Private Sub AbrirPilotos()
@@ -49,9 +49,9 @@ Public Class MainWindowViewModel
             .DataContext = New CircuitosViewModel.CircuitosConsultaViewModel
         }
     End Sub
-    Private Sub AbrirClasificacion()
-        Pantalla = New ClasificacionPage With {
-            .DataContext = New ClasificacionViewModel
+    Private Sub AbrirInforme()
+        Pantalla = New InformesPage With {
+            .DataContext = New InformesViewModel
         }
     End Sub
 End Class

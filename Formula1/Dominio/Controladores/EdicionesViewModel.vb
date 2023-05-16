@@ -2,85 +2,89 @@
 Imports Formula1.ViewModelBase
 
 Namespace EdicionesViewModel
-    Public Class EdicionesConsultaViewModel
-        Inherits ViewModelBase.ViewModelBase
 
-        Public EdicionInsercion As EdicionInsercionWindow
-        Public Sub New()
-            CrearEdicionCommand = New DelegateCommand(AddressOf CrearEdicion)
-            CargarDatos()
-        End Sub
-        Public Property Ediciones As List(Of Edicion)
-        Public Property CrearEdicionCommand As ICommand
-        Private Sub CrearEdicion()
-            If EdicionInsercion Is Nothing Then
-                crearVentana()
-            Else
-                Try
-                    EdicionInsercion.Show()
-                    MsgBox("Ya tienes una ventana abierta")
-                    EdicionInsercion.Focus()
-                Catch ex As Exception
-                    crearVentana()
-                End Try
-            End If
-        End Sub
-        Private Sub crearVentana()
-            EdicionInsercion = New EdicionInsercionWindow
-            EdicionInsercion.DataContext = New EdicionInsercionViewModel(EdicionInsercion, Me)
-            EdicionInsercion.Show()
-        End Sub
-        Public Sub CargarDatos()
-            Ediciones = EdicionDAO.ObtenterTodasEdiciones
-        End Sub
-    End Class
     Public Class EdicionInsercionViewModel
+        Inherits ViewModelBase.ViewModelBase
         Private vista As EdicionInsercionWindow
-        Private viewModel As EdicionesConsultaViewModel
         Private granPremio As GranPremio
-        Public Sub New(view As EdicionInsercionWindow, viewModel As EdicionesConsultaViewModel)
-            vista = view
-            Me.viewModel = viewModel
-            CrearEdicionCommand = New DelegateCommand(AddressOf CrearEdicion)
-        End Sub
+        Private clasificaciones As List(Of Clasificacion)
+        Private _Fecha As Date?
+
         Public Sub New(view As EdicionInsercionWindow, granPremio As GranPremio)
             vista = view
             Me.granPremio = granPremio
             Circuitos = CircuitoDAO.ObtenerTodosCircuitosPaisClaveValor(granPremio.Pais.IdPais)
             CrearEdicionCommand = New DelegateCommand(AddressOf CrearEdicion)
             Titulo = "Edicion del gran premio de " + granPremio.Nombre
-            Año = Date.Now.Year
+
         End Sub
 
         Public Property Nombre As String
         Public Property Titulo As String
-        Public Property Año As Integer
-        Public Property Fecha As Date
+        Public Property Fecha As Date?
+            Get
+                Return _Fecha
+            End Get
+            Set
+                _Fecha = Value
+                OnPropertyChanged("Fecha")
+            End Set
+        End Property
         Public Property Circuitos As List(Of ClaveValor)
         Public Property CircuitoSeleccionado As ClaveValor
         Public Property CrearEdicionCommand As ICommand
         Private Sub CrearEdicion()
-            Dim edicion As New Edicion With {
-                .GranPremio = granPremio,
-                .Nombre = Nombre,
-                .Fecha = Fecha
-            }
-
-            EdicionDAO.InsertarEdicion(edicion)
-            RealizarCarrera()
+            Dim pilotos = PilotoDAO.obtenerPilotosEdicion(Fecha.Value.Year)
+            If pilotos.Count > 0 Then
+                Dim posicion = CInt(Int((pilotos.Count * Rnd()) + 1)) - 1
+                Dim circuitoAux = CircuitoDAO.ObtenerCircuitoPorId(CircuitoSeleccionado.Clave)
+                Dim edicion As New Edicion With {
+                    .GranPremio = granPremio,
+                    .Nombre = Nombre,
+                    .Fecha = Fecha,
+                    .Año = Fecha.Value.Year,
+                    .Piloto_VR = pilotos.Item(posicion)
+                }
+                If circuitoAux IsNot Nothing Then
+                    edicion.Circuito = circuitoAux
+                    edicion.IdEdicion = EdicionDAO.InsertarEdicion(edicion)
+                    RealizarCarrera(pilotos, edicion)
+                Else
+                    MsgBox("Selecciona un circuito para esta edicion")
+                End If
+                Dim ventana As New PilotosParticipantesWindow With {.DataContext = New PilotosParticipantesViewModel(edicion, clasificaciones)}
+                ventana.Show()
+            Else
+                MsgBox("No hay pilotos inscritos esta temporada")
+            End If
             Cerrar()
         End Sub
-        Private Sub RealizarCarrera()
-
+        Private Sub RealizarCarrera(pilotos As List(Of Piloto), edicion As Edicion)
+            clasificaciones = New List(Of Clasificacion)
+            Dim clasificacioncarrera = 1
+            While pilotos.Count > 0
+                Dim posicion = CInt(Int((pilotos.Count * Rnd()) + 1)) - 1
+                Dim piloto = pilotos.Item(posicion)
+                pilotos.Remove(pilotos.Item(posicion))
+                Dim clasificacion As New Clasificacion With {.Edicion = edicion, .Piloto = piloto, .Posicion = clasificacioncarrera}
+                clasificacioncarrera += 1
+                ClasificacionDAO.InsertarClasificacion(clasificacion)
+                clasificaciones.Add(clasificacion)
+            End While
         End Sub
         Private Sub Cerrar()
-            MsgBox(Año)
             vista.Close()
-            If viewModel IsNot Nothing Then
-                viewModel.CargarDatos()
-            End If
         End Sub
     End Class
 
-
+    Public Class PilotosParticipantesViewModel
+        Public Sub New(edicion As Edicion, clasificaciones As List(Of Clasificacion))
+            Titulo = "Clasificaciones de " + edicion.Nombre
+            VueltaRapida = "El piloto que realizo la vuelta rápida fue " + edicion.Piloto_VR.Nombre
+            Me.Clasificaciones = clasificaciones
+        End Sub
+        Public Property Titulo As String
+        Public Property VueltaRapida As String
+        Public Property Clasificaciones As List(Of Clasificacion)
+    End Class
 End Namespace

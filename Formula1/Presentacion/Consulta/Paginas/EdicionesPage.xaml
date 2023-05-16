@@ -8,11 +8,13 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="EdicionesPage">
     <DockPanel Margin=" 15" >
-        <Grid Height=" 50" DockPanel.Dock="Top">
+        <Grid Height=" 50"  DockPanel.Dock="Top">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width=" auto"/>
+                <ColumnDefinition Width=" auto"/>
             </Grid.ColumnDefinitions>
-            <Button Content="Añadir Edicion" Padding="15,0" Command="{Binding CrearEdicionCommand}" VerticalAlignment="Center"/>
+            <Label Content="Gran premio: " VerticalAlignment="Center"/>
+            <ComboBox ItemsSource="{Binding GrandesPremios}" SelectedItem="{Binding GranPremioSeleccionado, UpdateSourceTrigger=PropertyChanged}" Grid.Column="1" VerticalAlignment="Center" Width="150"/>
 
         </Grid>
         <DataGrid ItemsSource="{Binding Ediciones, UpdateSourceTrigger=PropertyChanged}" Height=" auto"  IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Top"  CanUserAddRows="False" RowHeaderWidth="0" CanUserResizeRows="False">
