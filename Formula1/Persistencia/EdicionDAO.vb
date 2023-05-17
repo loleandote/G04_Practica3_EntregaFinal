@@ -2,9 +2,8 @@
 Imports MySql.Data.MySqlClient
 
 Public Class EdicionDAO
-    Public Shared Function ObtenterTodasEdiciones() As List(Of Edicion)
-        Dim ediciones As New List(Of Edicion)
-        Return ediciones
+    Public Shared Function ObtenterEdicionesGranPremio(idGranPremio As Integer) As Boolean
+        Return AgenteBD.ObtenerAgente.Leer("select * from edicion where idgran_premio=" + idGranPremio.ToString).Count > 0
     End Function
     Public Shared Function obtenerEdicionesGranPremio(idGranPremio As Integer) As List(Of ClaveValor)
         Dim ediciones As New List(Of ClaveValor)
@@ -51,4 +50,14 @@ Public Class EdicionDAO
         End Try
         Return años
     End Function
+
+    Public Shared Sub eliminarEdicionesGranPremio(idGranPremio As Integer)
+        Try
+            AgenteBD.ObtenerAgente.Modificar("delete from clasificacion_carrera where edicion in (select idEdicion from edicion where idgran_premio=" + idGranPremio.ToString + ")")
+            AgenteBD.ObtenerAgente.Modificar("delete from clasificacion_carrera where edicion in (select idEdicion from edicion where idgran_premio=" + idGranPremio.ToString + ")")
+            AgenteBD.ObtenerAgente.Modificar("delete from edicion where idgran_premio=" + idGranPremio.ToString)
+        Catch ex As MySqlException
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "error en la eliminación")
+        End Try
+    End Sub
 End Class

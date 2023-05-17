@@ -182,7 +182,13 @@ Namespace PaisesViewModel
         End Sub
 
         Private Sub EliminarPais()
-            PaisDAO.EliminarPais(pais.IdPais)
+            Dim eliminar As Boolean = True
+            If PaisDAO.obtenerPilotosPais(pais.IdPais) Then
+                eliminar = MsgBox("Hay pilotos en este pais" + vbCrLf + "¿Quieres eliminar los pilotos?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes
+            End If
+            If eliminar Then
+                PaisDAO.EliminarPais(pais.IdPais)
+            End If
             Cerrar()
         End Sub
 

@@ -224,7 +224,13 @@ Namespace PilotosViewModel
         End Sub
 
         Private Sub EliminarPiloto()
-            PilotoDao.EliminarPiloto(piloto.IdPiloto)
+            Dim eliminar As Boolean = True
+            If PilotoDAO.obtenerParticipacionesPiloto(piloto.IdPiloto) Then
+                eliminar = MsgBox("Hay alguna edicion en la que participa este piloto" + vbCrLf + "¿Quieres eliminar las inscripciones?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes
+            End If
+            If eliminar Then
+                PilotoDAO.EliminarPiloto(piloto.IdPiloto)
+            End If
             Cerrar()
         End Sub
         'Cerrar formulario y recargar paises

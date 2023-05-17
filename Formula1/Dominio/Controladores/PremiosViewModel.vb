@@ -1,7 +1,5 @@
 ﻿Imports Formula1.EdicionesViewModel
-Imports Formula1.PaisesViewModel
 Imports Formula1.ViewModelBase
-Imports Microsoft.Reporting.WinForms
 
 Namespace PremiosViewModel
     Public Class PremiosConsultaViewModel
@@ -139,7 +137,16 @@ Namespace PremiosViewModel
         End Sub
 
         Private Sub EliminarGranPremio()
-            GranPremioDAO.EliminarGranPremio(premio.idGranPremio)
+            Dim eliminar As Boolean = True
+            If EdicionDAO.ObtenterEdicionesGranPremio(premio.idGranPremio) Then
+                eliminar = MsgBox("Hay alguna edicion de este gran premio" + vbCrLf + "¿Quieres eliminar las ediciones?", MsgBoxStyle.YesNo) = MsgBoxResult.Yes
+                If eliminar Then
+                    EdicionDAO.eliminarEdicionesGranPremio(premio.idGranPremio)
+                End If
+            End If
+            If eliminar Then
+                GranPremioDAO.EliminarGranPremio(premio.idGranPremio)
+            End If
             Cerrar()
         End Sub
 

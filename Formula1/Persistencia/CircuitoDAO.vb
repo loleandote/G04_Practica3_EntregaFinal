@@ -58,8 +58,12 @@ Public Class CircuitoDAO
         End Try
     End Sub
 
+    Public Shared Function obtenerEdicionesCircuito(idCircuito As Integer) As Boolean
+        Return AgenteBD.ObtenerAgente.Leer("select * from ediciones where circuito= " + idCircuito.ToString).Count > 0
+    End Function
     Public Shared Sub EliminarCircuito(idCircuito As Integer)
         Try
+            AgenteBD.ObtenerAgente.Modificar("delete from clasificacion_carrera where edicion in (select idEdicion from edicion where circuito=" + idCircuito.ToString + ")")
             AgenteBD.ObtenerAgente.Modificar("delete from circuito where idCircuito= " & idCircuito)
         Catch ex As MySqlException
             MsgBox(ex.Message, MsgBoxStyle.Critical, "error en la eliminación")

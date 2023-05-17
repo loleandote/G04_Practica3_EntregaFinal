@@ -149,8 +149,13 @@ Public Class PilotoDAO
         End Try
     End Sub
 
+    Public Shared Function obtenerParticipacionesPiloto(idPiloto As Integer) As Boolean
+        Return AgenteBD.ObtenerAgente.Leer("select * from inscripcion_mundial where piloto=" + idPiloto.ToString).Count > 0
+    End Function
     Public Shared Sub EliminarPiloto(idPiloto As Integer)
         Try
+            AgenteBD.ObtenerAgente.Modificar("delete from inscripcion_mundial where piloto=" + idPiloto.ToString)
+            AgenteBD.ObtenerAgente.Modificar("delete from clasificacion_carrera where piloto=" + idPiloto.ToString)
             AgenteBD.ObtenerAgente.Modificar("delete from piloto where idpiloto=" + idPiloto.ToString)
         Catch ex As MySqlException
             MsgBox(ex.Message, MsgBoxStyle.Critical, "error en la eliminación")
