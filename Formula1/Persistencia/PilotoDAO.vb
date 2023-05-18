@@ -80,9 +80,7 @@ Public Class PilotoDAO
     End Function
 
     Public Shared Function obtenerParticipantes(idEdicion As Integer) As List(Of PilotoReporte)
-        Dim puntos As New List(Of Integer) From {25, 18, 15, 12, 10, 8, 6, 4, 2, 1}
         Dim participantes As New List(Of PilotoReporte)
-
         Try
             Dim idPilotoRapido As Integer = Integer.Parse(AgenteBD.ObtenerAgente.Leer("select piloto_vr from edicion where idEdicion= " + idEdicion.ToString).Item(1).item(1).ToString)
             For Each piloto In AgenteBD.ObtenerAgente.Leer("select piloto.nombre, pais.nombre, clasificacion_carrera.posicion, piloto.idpiloto from piloto join pais on piloto.pais= pais.idpais join clasificacion_carrera on piloto.idPiloto= clasificacion_carrera.piloto where clasificacion_carrera.edicion= " + idEdicion.ToString)
@@ -91,15 +89,13 @@ Public Class PilotoDAO
                     .Pais = piloto(2).ToString,
                     .Posicion = Integer.Parse(piloto(3).ToString)
                                  }
-                If participante.Posicion <= puntos.Count Then
-                    participante.Puntuacion = puntos.Item(participante.Posicion - 1)
-                    If idPilotoRapido = Integer.Parse(piloto(4).ToString) Then
-                        participante.Puntuacion += 1
+                If participante.Posicion <= ClasificacionDAO.puntos.Count Then
+                    participante.Puntos = ClasificacionDAO.puntos(participante.Posicion - 1)
+                    If Integer.Parse(piloto(4).ToString) = idPilotoRapido Then
+                        participante.Puntos += 1
                     End If
                 End If
                 participantes.Add(participante)
-
-
             Next
         Catch ex As MySqlException
             MsgBox(ex.Message, MsgBoxStyle.Critical, "error en la consulta")

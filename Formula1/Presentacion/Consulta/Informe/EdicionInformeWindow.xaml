@@ -7,11 +7,12 @@
         mc:Ignorable="d"
         Title="{Binding Titulo}" Height="450" Width="650">
     <Grid Margin="15">
-        <DataGrid ItemsSource="{Binding Clasificaciones}" Height=" auto" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Top" CanUserAddRows="False" RowHeaderWidth="0" CanUserResizeRows="False" >
+        <DataGrid ItemsSource="{Binding Participanes}" Height=" auto" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Top" CanUserAddRows="False" RowHeaderWidth="0" CanUserResizeRows="False" >
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Nombre" Width="*" Binding="{Binding Piloto.Nombre}"/>
-                <DataGridTextColumn Header="Pais" Width="100" Binding="{Binding Piloto.Pais}"/>
+                <DataGridTextColumn Header="Nombre" Width="*" Binding="{Binding Nombre}"/>
+                <DataGridTextColumn Header="Pais" Width="100" Binding="{Binding Pais}"/>
                 <DataGridTextColumn Header="Posición" Width="100" Binding="{Binding Posicion}"/>
+                <DataGridTextColumn Header="Puntos" Width="100" Binding="{Binding Puntos}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

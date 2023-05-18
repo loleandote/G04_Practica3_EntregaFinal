@@ -1,7 +1,7 @@
 ﻿Imports MySql.Data.MySqlClient
 
 Public Class ClasificacionDAO
-    Private Shared puntos As New List(Of Integer) From {25, 18, 15, 12, 10, 8, 6, 4, 2, 1}
+    Public Shared puntos As New List(Of Integer) From {25, 18, 15, 12, 10, 8, 6, 4, 2, 1}
     Public Shared Function ObtenerTodasClasificaciones() As List(Of Clasificacion)
         Dim clasificaciones As New List(Of Clasificacion)
         Return clasificaciones
