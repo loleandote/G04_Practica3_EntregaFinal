@@ -1,0 +1,2 @@
+En la tabla inscripcion_mundial se ha añadido como clave primaria el año de edicion para permitir que un piloto se presente en varias ediciones del torneo
+En la tabla clasificacion_carrera se ha añadido como clave primaria el año de edicion para permitir que un piloto se presente en varias ediciones del torneo
