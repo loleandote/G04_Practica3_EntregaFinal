@@ -36,6 +36,17 @@ Public Class CircuitoDAO
         End Try
         Return circuitos
     End Function
+    Public Shared Function ObtenerCircuitoPorIdEdicion(idEdicion As Integer) As Circuito
+        Dim circuitos As New Circuito
+        Try
+            For Each circuito In AgenteBD.ObtenerAgente.Leer("select * from circuito join pais on circuito.pais= pais.idpais join edicion on edicion.circuito = circuito.idcircuito where edicion.idedicion=" & idEdicion)
+                circuitos = New Circuito() With {.IdCircuito = Integer.Parse(circuito(1).ToString), .Nombre = circuito(2).ToString, .Ciudad = circuito(3).ToString, .Longitud = Integer.Parse(circuito(5).ToString), .Curvas = Integer.Parse(circuito(6).ToString), .Pais = New Pais With {.IdPais = circuito(7).ToString, .Nombre = circuito(8).ToString}}
+            Next
+        Catch ex As MySqlException
+            MsgBox(ex.Message, MsgBoxStyle.Critical, "error en la consulta")
+        End Try
+        Return circuitos
+    End Function
 
     Public Shared Sub InsertarCircuito(circuito As Circuito)
         Try

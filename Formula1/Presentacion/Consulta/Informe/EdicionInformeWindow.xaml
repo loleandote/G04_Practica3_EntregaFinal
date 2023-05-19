@@ -7,7 +7,26 @@
         mc:Ignorable="d"
         Title="{Binding Titulo}" Height="450" Width="650">
     <Grid Margin="15">
-        <DataGrid ItemsSource="{Binding Participanes}" Height=" auto" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Top" CanUserAddRows="False" RowHeaderWidth="0" CanUserResizeRows="False" >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="AUTO"/>
+            <RowDefinition Height="30"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition/>            
+        </Grid.ColumnDefinitions>
+        <Label Content="Nombre:"/>
+        <Label Content="Ubicación:" Grid.Column="2"/>
+        <Label Content="Longitud:" Grid.Row="1"/>
+        <Label Content="Curvas:" Grid.Row="1" Grid.Column="2"/>
+        <Label Content="{Binding Circuito.Nombre}" Grid.Column="1"/>
+        <Label Content="{Binding Ubicacion}" Grid.Column="3"/>
+        <Label Content="{Binding Circuito.Longitud}" Grid.Row="1" Grid.Column="1"/>
+        <Label Content="{Binding Circuito.Curvas}" Grid.Row="1" Grid.Column="3"/>
+        <DataGrid ItemsSource="{Binding Participanes}" Grid.Row="2" Grid.ColumnSpan="4" Height=" auto" IsReadOnly="True" AutoGenerateColumns="False" VerticalAlignment="Top" CanUserAddRows="False" RowHeaderWidth="0" CanUserResizeRows="False" >
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Nombre" Width="*" Binding="{Binding Nombre}"/>
                 <DataGridTextColumn Header="Pais" Width="100" Binding="{Binding Pais}"/>
