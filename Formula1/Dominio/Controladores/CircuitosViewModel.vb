@@ -114,6 +114,13 @@ Namespace CircuitosViewModel
             End If
         End Sub
 
+       ' Este metodo crea una nueva instancia de la ventana `CircuitoEdicionWindow` y
+       ' establece su contexto de datos en una nueva instancia del modelo de vista
+       ' `CircuitoEdicionViewModel`. El parámetro `circuito` se pasa al constructor del modelo de
+       ' vista junto con la instancia `CircuitoEdicionWindow` y la instancia
+       ' `CircuitosConsultaViewModel` (`Me`). Finalmente, se muestra la ventana. Este sub se llama
+       ' cuando el usuario hace clic en los botones "CrearCircuito" o "EditarCircuito" en el modelo de
+       ' vista `CircuitosConsultaViewModel`.
         Private Sub crearVentana(circuito As Circuito)
             CircuitoEdicion = New CircuitoEdicionWindow
             CircuitoEdicion.DataContext = New CircuitoEdicionViewModel(circuito, CircuitoEdicion, Me)
